@@ -78,6 +78,20 @@ str_c(
   "."   # Si cumpleaños = FALSE es una cadena de long. 0... no se colapsa
 )
 ```
+
+```{r str_c interesante}
+#sep es extra-vector en cambio collapse es intravector
+c("a", "b", "c")
+str_c(c("a", "b", "c"), sep = ",")
+str_c(c("a"), c("b"), c("c"), sep = ",")
+str_c(c("a", "b", "c"), collapse = ",")
+str_c(c("a"), c("b"), c("c"), collapse = ",")
+str_c(c("a", "a"), c("b", "a"), c("c", "a"), collapse = ",") #idea de matriz
+str_c(c("a", "a"), c("b", "a"), c("c", "a"), sep = "")
+str_c("Letter: ", letters)
+```
+
+
 ```{r str_sub y str_to_lower}
 y <- c("Manzana", "Plátano", "Pera")
 str_sub(y, 1, 3)
@@ -99,6 +113,18 @@ x <- c("arándano", "espinaca", "banana")
 str_sort(x, locale = "es")  # Español
 str_sort(x, locale = "haw") # Hawaiano
 ```
+
+```{r str_trim y str_pad}
+str_trim(c(" abc "))
+str_trim(c(" ABC "), side = "left") # o "right"
+
+# lo opuesto a str_trim
+str_pad("abc", 5, side = "both")
+str_pad("abc", 4, side = "right")  # o "left"
+
+```
+
+
 
 ## Expresiones regulares y coincidencias  
 

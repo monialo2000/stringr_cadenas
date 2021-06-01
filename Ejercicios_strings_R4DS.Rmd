@@ -1,0 +1,78 @@
+---
+title: "Ejercicios String R4DS"
+output: html_notebook
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(datos)
+```
+
+```{r ejercicios}
+#paste() and paste0() 
+
+a <- c("a", "b", "c")
+b <- c("w", "x", "y", "z")
+paste(a, b)
+paste0(a, b)
+
+# join de los vectores: paste sep = " ", paste0 sin separador
+# str_c es más parecido a paste0. Difieren en NA, str_c da como resultado NA, y paste y paste0 los  combina
+str_c("a", NA); paste("a", NA); paste0("a", NA)
+```
+
+```{r}
+#Use str_length() and str_sub() to extract the middle character from a string. What will you do if the string has an even number of characters?
+
+a <- c ("abc", "ab", NA, "abcde")
+
+str_medio_1 <- function(a) {
+  if(length(a) == 0) {
+    a
+  } else {
+    l = str_length(a)
+    y = l %/% 2
+    z = l %% 2
+    m = y + z
+    str_sub(a, m, m )
+  }
+}
+ 
+str_medio(a) 
+#otra manera
+str_medio_2 <- function(a) {
+  if(length(a) == 0) {
+    a
+  } else {
+    L <- str_length(a)
+    m <- ceiling(L / 2)
+    str_sub(a, m, m)
+  }
+}
+str_medio_1(a)
+str_medio_2(a)
+
+```
+
+```{r}
+#str_wrap(string, width = 80, indent = 0, exdent = 0)
+
+thanks_path <- file.path(R.home("doc"), "THANKS")
+thanks <- str_c(readLines(thanks_path), collapse = "\n")
+thanks <- word(thanks, 1, 3, fixed("\n\n"))
+cat(str_wrap(thanks), "\n")
+cat(str_wrap(thanks, width = 40), "\n")
+cat(str_wrap(thanks, width = 60, indent = 2), "\n")
+cat(str_wrap(thanks, width = 60, exdent = 2), "\n")
+cat(str_wrap(thanks, width = 0, exdent = 2), "\n")
+
+sentences <- c("Jane saw a cat", "Jane sat down")
+word(sentences, 1)
+```
+
+```{r}
+str_view("\", "\")
+```
+
