@@ -1,5 +1,5 @@
 ---
-title: "Ejercicios String R4DS"
+title: "Ejercicios Strings R4DS"
 output: html_notebook
 editor_options: 
   chunk_output_type: inline
@@ -11,22 +11,22 @@ library(datos)
 ```
 
 ```{r ejercicios}
-#paste() and paste0() 
+#2.5.1 paste() and paste0() 
 
 a <- c("a", "b", "c")
 b <- c("w", "x", "y", "z")
 paste(a, b)
 paste0(a, b)
 
-# join de los vectores: paste sep = " ", paste0 sin separador
+#2.5.2 join de los vectores: paste sep = " ", paste0 sin separador
 # str_c es más parecido a paste0. Difieren en NA, str_c da como resultado NA, y paste y paste0 los  combina
 str_c("a", NA); paste("a", NA); paste0("a", NA)
 ```
 
 ```{r}
-#Use str_length() and str_sub() to extract the middle character from a string. What will you do if the string has an even number of characters?
+#2.5.3 Use str_length() and str_sub() to extract the middle character from a string. What will you do if the string has an even number of characters?
 
-a <- c ("abc", "ab", NA, "abcde")
+a <- "abcde"
 
 str_medio_1 <- function(a) {
   if(length(a) == 0) {
@@ -40,7 +40,6 @@ str_medio_1 <- function(a) {
   }
 }
  
-str_medio(a) 
 #otra manera
 str_medio_2 <- function(a) {
   if(length(a) == 0) {
@@ -57,7 +56,7 @@ str_medio_2(a)
 ```
 
 ```{r}
-#str_wrap(string, width = 80, indent = 0, exdent = 0)
+#2.5.4 str_wrap(string, width = 80, indent = 0, exdent = 0)
 
 thanks_path <- file.path(R.home("doc"), "THANKS")
 thanks <- str_c(readLines(thanks_path), collapse = "\n")
@@ -73,6 +72,59 @@ word(sentences, 1)
 ```
 
 ```{r}
-str_view("\", "\")
+# 2.5.5 ¿Qué hace str_trim()? (trim = recortar) ¿Cuál es el opuesto de str_trim()?
+#str_trim elimina blancos de adelante y atras 
+# str_squish() elimina blancos repetidos de medio
+
+#El opuesto es str_pad
+#str_pad(string, width, side = c("left", "right", "both"), pad = " ")
+rbind(
+  str_pad("hadley", 30, "left"),
+  str_pad("hadley", 30, "right"),
+  str_pad("hadley", 30, "both")
+)
 ```
+
+```{r}
+#4.2.6 Escribe una función que convierta, por ejemplo, el vector c("a", "b", "c") en la cadena a, b y c. Piensa con detención qué debería hacer dado un vector de largo 0, 1 o 2.
+x <- c("a", "b", "c", "d")
+agrega_y <- function(x, delim = ","){
+n <- length(x)
+  if (n < 2) {
+    x
+  } else if (n == 2) {
+    # solo separar con "y"
+    str_c(x[[1]], "y", x[[2]], sep = " ")
+  } else {
+    # separar con comas todos los elementos, excepto los dos último, que llevan una "y"
+    str_c(c(str_c(x[seq_len(n - 2)], delim), 
+            str_c(x[[n-1]], "y", x[[n]], sep = " ")), 
+          collapse = " ")
+  }
+}
+agrega_y(x)
+x <- "a"
+agrega_y(x)
+```
+
+
+```{r}
+#2.7.1 Explica por qué cada una de estas cadenas no coincide con \: "\", "\\", "\\\". 
+x <- "\\"
+#str_view(x, "\") 
+#lo toma como un escape pero no tiene otro caracter al que tenga que escapar
+str_view(x, "\\") 
+#las dos barras dejan 1 pero serviría como escape que no esta definido
+#str_view(x, "\\\")
+#las dos barras dejan 1 que sería escape de algun caracter, pero como es tambien una barra cree que es el escape de otro caracter especial 
+str_view(x, "\\\\") #las dos 1ras quedan como una barra, las dos ultimas como otra barra, entonces quedo "\\" que la primera es el escape de la segunda... ahí lo entendió como que se buscaba una barra.
+```
+
+```{r}
+#2.7.2. Cómo harías coincidir la secuencia "'\?
+
+```
+
+
+
 
