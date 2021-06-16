@@ -1,7 +1,9 @@
 ---
 title: "Ejercicios Strings R4DS"
-output: html_notebook
-editor_options: 
+output:
+  html_document:
+    df_print: paged
+editor_options:
   chunk_output_type: inline
 ---
 
@@ -113,7 +115,7 @@ agrega_y(x)
 x <- "\\"
 #str_view(x, "\") 
 #lo toma como un escape pero no tiene otro caracter al que tenga que escapar
-str_view(x, "\\") 
+#str_view(x, "\\") 
 #las dos barras dejan 1 pero serviría como escape que no esta definido
 #str_view(x, "\\\")
 #las dos barras dejan 1 que sería escape de algun caracter, pero como es tambien una barra cree que es el escape de otro caracter especial 
@@ -122,9 +124,67 @@ str_view(x, "\\\\") #las dos 1ras quedan como una barra, las dos ultimas como ot
 
 ```{r}
 #2.7.2. Cómo harías coincidir la secuencia "'\?
+x <- "\"'\\?"
+writeLines(x)
+
+str_view(x, "\\\"'\\\\")
+```
+
+```{r}
+#2.7.3. Con qué patrones coincidiría la expresión regular\..\..\..? ¿Cómo la representarías en una cadena?
+x <- c("abc.d.e.f", ".1. .3", ".a.b.c", "\\.\\.\\.")
+str_view(x, "\\..\\..\\..")
+```
+
+```{r}
+#2.8.1¿Cómo harías coincidir la cadena "$^$" de manera literal?
+x <- "$^$ "
+writeLines(x)
+str_view(x, "\\$\\^\\$")
 
 ```
 
+```{r}
+# 2.8.2 Dado el corpus de palabras comunes en datos::palabras, crea una expresión regular que busque palabras:
+ datos::palabras
+#Empiecen con “y”.
+str_view(palabras, "^y", match = TRUE)
+#Terminen con “z”
+str_view(palabras, "z$", match = TRUE)
+#Tengan una extensión de exactamente tres letras.
+str_view(palabras, "^...$", match = TRUE)
+#Tengan ocho letras o más
+str_view(palabras, "........", match = TRUE)
 
+```
 
+```{r}
+#Crea una expresión regular que encuentre todas las palabras que:
+#1. Empiecen con una vocal.
+str_view(palabras, "^[aeiou]", match = TRUE)
+#2.Solo contengan consonantes. (Pista: piensa en cómo buscar coincidencias para “no”-vocales.)
+str_view(palabras, "^[^aáeéiíoóuúü]+$", match = TRUE)
+#3.Terminen en ón, pero no en ión.
+str_view(palabras, "[^i]ón$", match = TRUE)
+#4.Terminen con ndo o ado.
+str_view(palabras, "ndo$|ado$", match = TRUE)
+```
+
+```{r}
+#2.9.2 ¿Siempre a una “q” la sigue una “u”?
+ str_subset(palabras, "q[^u]") 
+```
+
+```{r}
+#2.9.3 Escribe una expresión regular que permita buscar un verbo que haya sido escrito usando voseo en segunda persona plural (por ejemplo, queréis en vez de quieren).
+a <- "queréis"
+str_subset(palabras, "[áéíóú]is$") 
+str_subset(a, "[áéíóú]is$") 
+```
+ **ojo no esta bien**
+```{r}
+#Crea una expresión regular que coincida con la forma en que habitualmente se escriben los números de teléfono en tu país. ojo no está bien!!!!
+telefonos <- c("(011) 4281 9176", "(32)2819176", "(32)281 9176")
+str_view(telefonos, "\\(\\d\\d\\) \\d\\d\\d \\d\\d \\d\\d")
+```
 

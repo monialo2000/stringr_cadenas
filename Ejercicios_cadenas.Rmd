@@ -184,25 +184,42 @@ str_view(c("abc", "a.c", "a*c", "a c"), "a[ ]")
 ##Disyunción
 Sirve para elegir entre uno más patrones alternativos. Por ej. abc|d..a coincide tanto con "abc" como con "duna".
 
-```{r disyunción_|}
+```{r disyunción |}
 str_view(c("cómo", "como"), "c(ó|o)mo")
 str_view(c("abc", "abcyz", "abxyz", "xyz"), "abc|xyz")
 ```
 
 
-##Ejercicios
-1.Crea una expresión regular que encuentre todas las palabras que:
+## Repetición
+El siguiente paso en términos de poder implica controlar cuántas veces queremos que se encuentre un patrón:
 
-```{r}
-#1 Empiecen con una vocal.
-x <- c("anana", "Espacial", "inutil", "omaggio", "Ursula", "bANANA")
-str_view(x, "^[aAeEiIoOuU]")
+* ?: 0 o 1
+* +: 1 o más
+* : 0 o más
 
-#2 Solo contengan consonantes. (Pista: piensa en cómo buscar coincidencias para “no”-vocales.)
-str_view(x, "^[^aAeEiIoOuU]")
 
-#3 Terminen en ón, pero no en ión
-x <- c("partenon", "canción")
-str_view(x, "ón" )
+** FALTA SEGUIR CON ESTA PARTE... ME CANSO...SEGUIR MAÑANA**
+
+## Detectar coincidencias
+
+str_detect(): devuelve un vector lógico del mismo largo que el input y determina si coincide con patrón de busqueda.
+```{r str_detect}
+x <- c("manzana", "plátano", "pera")
+str_detect(x, "e")
 ```
 
+```{r operando matematicamente con vector logico}
+# ¿Cuántas palabras comunes empiezan con m?
+sum(str_detect(palabras, "^m"))
+#> [1] 81
+# ¿Qué proporción de palabras comunes terminan con una vocal?
+mean(str_detect(palabras, "[aáeéiéoéuú]$"))
+#> [1] 0.546
+```
+
+** FALTA SEGUIR CON ESTA PARTE... ME CANSO...SEGUIR MAÑANA**
+
+## Extraer coincidencias
+str_extract() para extraer el texto de una coincidencia.
+
+** FALTA SEGUIR CON ESTA PARTE... ME CANSO...SEGUIR MAÑANA**
