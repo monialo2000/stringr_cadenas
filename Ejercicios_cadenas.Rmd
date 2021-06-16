@@ -170,7 +170,9 @@ str_view(x, "^manzana$") #para buscar exactamente sin nada más delante ni detr�
       tabulador, salto de línea).                                       (para exp.reg  \\s)
 * [abc]     coincide con a b o c. 
 * [^abc]    coincide con todos menos a b o c.
+Recuerda que para crear una expresión regular que contenga \d o \s necesitas escapar la \ en la cadena, por lo que debes escribir "\\d" o "\\s".
 
+Utilizar una clase de caracter que contenga en su interior un solo caracter es una alternativa a la barra invertida cuando quieres incluir un solo metacaracter en la expresión regular.
 ```{r exp_reg[]}
 # Buscar de forma literal un caracter que usualmente tiene un significado especial en una expresión regular
 str_view(c("abc", "a.c", "a*c", "a c"), "a[.]c")
