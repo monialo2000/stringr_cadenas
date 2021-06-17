@@ -34,22 +34,25 @@ Backslash se usa para empezar una secuencia de escape en una constante de caract
 
 Single quotes hace escape con backslash en una cadena con single-quoted, and double quotes in double-quoted cadena.
 
-\n	newline
-\r	carriage return
-\t	tab
-\b	backspace
-\a	alert (bell)
-\f	form feed
-\v	vertical tab
-\\	backslash \
-\'	ASCII apostrophe '
-\"	ASCII quotation mark "
-\`	ASCII grave accent (backtick) `
-\nnn	character with given octal code (1, 2 or 3 digits)
-\xnn	character with given hex code (1 or 2 hex digits)
-\unnnn	Unicode character with given code (1--4 hex digits)
-\Unnnnnnnn	Unicode character with given code (1--8 hex digits)
-Alternative forms for the last two are \u{nnnn} and \U{nnnnnnnn}. All except the Unicode escape sequences are also supported when reading character strings by scan and read.table if allowEscapes = TRUE. Unicode escapes can be used to enter Unicode characters not in the current locale's charset (when the string will be stored internally in UTF-8).
+```{r}
+# \n	newline
+# \r	carriage return
+# \t	tab
+# \b	backspace
+# \a	alert (bell)
+# \f	form feed
+# \v	vertical tab
+# \\	backslash \
+# \'	ASCII apostrophe '
+# \"	ASCII quotation mark "
+# \`	ASCII grave accent (backtick) `
+# \nnn	character with given octal code (1, 2 or 3 digits)
+# \xnn	character with given hex code (1 or 2 hex digits)
+# \unnnn	Unicode character with given code (1--4 hex digits)
+# \Unnnnnnnn	Unicode character with given code (1--8 hex digits)
+# Alternative forms for the last two are \u{nnnn} and \U{nnnnnnnn}. All except the Unicode escape sequences are also supported when reading character strings by scan and read.table if allowEscapes = TRUE. Unicode escapes can be used to enter Unicode characters not in the current locale's charset (when the string will be stored internally in UTF-8).
+```
+
 
 ## Funciones de cadena
 
@@ -164,9 +167,9 @@ str_view(x, "^manzana$") #para buscar exactamente sin nada más delante ni detr�
 
 ## Clases de caracteres y alternativas:
 
-* .         coincide con cualquier caracter (execpto salto de línea)    (para exp.reg \.)
-* \d        coincide con cualquier dígito                               (para exp.reg  \\d)
-* \s: coincide con cualquier espacio en blanco (por ejemplo, espacio simple, 
+* ´.´     coincide con cualquier caracter (execpto salto de línea)    (para exp.reg \.)
+* ´\d´    coincide con cualquier dígito                               (para exp.reg  \\d)
+* ´\s´: coincide con cualquier espacio en blanco (por ejemplo, espacio simple, 
       tabulador, salto de línea).                                       (para exp.reg  \\s)
 * [abc]     coincide con a b o c. 
 * [^abc]    coincide con todos menos a b o c.
@@ -174,14 +177,26 @@ Recuerda que para crear una expresión regular que contenga \d o \s necesitas es
 
 Utilizar una clase de caracter que contenga en su interior un solo caracter es una alternativa a la barra invertida cuando quieres incluir un solo metacaracter en la expresión regular.
 ```{r exp_reg[]}
-# Buscar de forma literal un caracter que usualmente tiene un significado especial en una expresión regular
+# Buscar de forma literal un caracter que usualmente tiene un significado especial en una expresión regular - PATRON
 str_view(c("abc", "a.c", "a*c", "a c"), "a[.]c")
 str_view(c("abc", "a.c", "a*c", "a c"), ".[*]c")
 str_view(c("abc", "a.c", "a*c", "a c"), "a[ ]")
 ```
-**funciona con los siguientes metacaracteres de las expresiones regulares: $ . | ? * + ( ) [ { **  
-**estos otros deben manejarse con \ para escaparlos: ] \ ^ y - **
+**funciona con los siguientes metacaracteres de las expresiones regulares: $ . | ? * + ( ) [ { pero estos otros deben manejarse con \\ para escaparlos: ] \\ ^  - **
 
+Hay un buen numero de clases predefinidas que puedes usar dentro de `[]`:
+
+* `[:punct:]`: punctuation.
+* `[:alpha:]`: letters.
+* `[:lower:]`: lowercase letters.
+* `[:upper:]`: upperclass letters.
+* `[:digit:]`: digits.
+* `[:xdigit:]`: hex digits.
+* `[:alnum:]`: letters and numbers.
+* `[:cntrl:]`: control characters.
+* `[:graph:]`: letters, numbers, and punctuation.
+* `[:print:]`: letters, numbers, punctuation, and whitespace.
+* `[:space:]`: space characters (basically equivalent to `\s`).
 
 ##Disyunción
 Sirve para elegir entre uno más patrones alternativos. Por ej. abc|d..a coincide tanto con "abc" como con "duna".
@@ -199,16 +214,115 @@ El siguiente paso en términos de poder implica controlar cuántas veces queremo
 * +: 1 o más
 * : 0 o más
 
+```{r REPETICION}
+x <- "1888 es el año más largo en números romanos: MDCCCLXXXVIII"
+str_view(x, "CC?")
+str_view(x, "CC+")
+str_view(x, "CC:")
+```
+También puedes especificar el número de coincidencias que quieres encontrar de manera precisa:
 
-** FALTA SEGUIR CON ESTA PARTE... ME CANSO...SEGUIR MAÑANA**
+{n}: exactamente n
+{n,}: n o más
+{,m}: no más de m
+{n,m}: entre n y m
 
-## Detectar coincidencias
 
-str_detect(): devuelve un vector lógico del mismo largo que el input y determina si coincide con patrón de busqueda.
+```{r repeticion exacta, mas o menos}
+str_view(x, "C{2}")
+str_view(x, "C{2,}")
+str_view(x, "C{1,4}") # como {,4}me da error
+str_view(x, "C{2,3}") # ojo no dejar blanco entre coma y el otro valor
+```
+## Agrupamiento y referencias previas
+
+Anteriormente aprendiste sobre el uso de paréntesis para desambiguar expresiones complejas. Los paréntesis también sirven para crear un grupo de captura numerado (número 1, 2, etc.). Un grupo de captura guarda la parte de la cadena que coincide con la parte de la expresión regular entre paréntesis. Puedes referirte al mismo texto tal como fue guardado en un grupo de captura utilizando referencias previas, como \1, \2 etc. Por ejemplo, la siguiente expresión regular busca todas las frutas que tengan un par de letras repetido.
+
+```{r ejemplo agrupamiento y ref previas}
+y <- c("amdamdxx", "recdcxcdcx")
+str_view(frutas, "(..)\\1", match = TRUE)
+str_view(y, "(...)\\1", match = TRUE)
+
+#La expresión regular (.)\1\1 coincide con cualquier caracter repetido tres veces seguidas.
+str_view(c("a", "aa", "aaa", "aaaa"), "(.)\\1\\1")
+#La cadena "(.)(.)\\2\\1" coincide con los dos caracteres capturados seguidos de los mismos dos caracteres pero en orden inverso:
+str_view(c("abba", "abab"), "(.)(.)\\2\\1")
+#La expresión regular (..)\1 coincide con un par de letras que se repite dos veces:
+str_view(c("abba", "abab"), "(..)\\1")
+#La cadena "(.).\\1.\\1" coicide con la secuencia: caracter capturado, otro caracter, caracter capturado, otro caracter, caracter capturado:
+str_view(c("babab", "babeb", "abab"), "(.).\\1.\\1")
+#La cadena "(.)(.)(.).*\\3\\2\\1" coincide con los tres caracteres capturados, cero o más de otros caracteres y luego los tres caracteres capturados en orden inverso:
+str_view(c("abcdefgcba", "abccba", "abcabc"), "(.)(.)(.).*\\3\\2\\1")
+```
+
+## Herramientas
+En esta sección aprenderás una amplia variedad de funciones de stringr que te permitirán:
+
+Determinar qué cadenas coinciden con un patrón.
+Encontrar la posición de una coincidencia.
+Extraer el contenido de las coincidencias.
+Remplazar coincidencias con nuevos valores.
+Dividir una cadena de acuerdo a una coincidencia.
+
+Es fácil intentar resolver todos los problemas con una sola expresión regular. No olvides que estás trabajando en un lenguaje de programación y que tienes otras herramientas a tu disposición. En vez de crear una sola expresión regular compleja, usualmente es más fácil crear una serie de expresiones regulares más simples. Si te atascaste tratando de crear una sola expresión regular que resuelva tu problema, da un paso atrás y piensa cómo podrías dividir el problema en partes más pequeñas. Esto te permitirá ir resolviendo cada desafío antes de moverte al siguiente.
+
+### Detectar coincidencias
+
+str_detect(): devuelve **un vector lógico** del mismo largo que el input y determina si coincide con patrón de busqueda.
 ```{r str_detect}
 x <- c("manzana", "plátano", "pera")
 str_detect(x, "e")
 ```
+Cuando tienes condiciones lógicas complejas, (p. ej., encontrar a o b pero no c, salvo que d), suele ser más fácil combinar múltiples llamadas a str_detect() con operadores lógicos, que tratar de crear una sola expresión regular.
+
+```{r str_detect ejemplo "al menos una vocal"}
+# Encuentra todas las palabras que contengan al menos una vocal, y luego niégalo
+sin_vocales_1 <- !str_detect(palabras, "[aáeéiíoóuúúü]")
+# Encuentra todas las palabras consistentes solo en consonantes (no vocales)
+sin_vocales_2 <- str_detect(palabras, "^[^aáeéiíoóuúúü]+$")
+identical(sin_vocales_1, sin_vocales_2)
+#> [1] TRUE
+```
+
+lo más habitual es que tus cadenas de caracteres sean una columna de un data frame y que prefieras utilizar la función filter() (filtrar):
+```{r filtrar con str_detect}
+df <- tibble(
+  palabra = palabras, 
+  i = seq_along(palabra)
+)
+df %>% 
+  filter(str_detect(palabras, "x$"))
+```
+Ten en cuenta que las coincidencias nunca se superponen. Por ejemplo, en "abababa", ¿cuántas veces se encontrará una coincidencia con el patrón "aba"? Las expresiones regulares dicen que dos, no tres:
+
+```{r str_ coincidencias no se superponen }
+str_count("abababa", "aba")
+#> [1] 2
+str_view_all("abababa", "aba")
+```
+
+**Toma nota sobre el uso de str_view_all(). Como aprenderás dentro de poco, muchas funciones de stringr vienen en pares: una función trabaja con una sola coincidencia y la otra con todas. La segunda función tendrá el sufijo _all (todas).**
+
+str_count(): indica cuántas coincidencias hay en una cadena.
+
+```{r str_count}
+x <- c("manzana", "plátano", "pera")
+str_count(x, "a")
+
+
+# En promedio, ¿cuántas vocales hay por palabra?
+mean(str_count(palabras, "[aáeéiíoóuúü]"))
+```
+Es natural usar str_count() junto con mutate():
+
+```{r str_count en mutate}
+df %>% 
+  mutate(
+    vocales = str_count(palabra, "[aáeéiíoóuúü]"),
+    consonantes = str_count(palabra, "[^aáeéiíoóuúü]")
+  )
+```
+
 
 ```{r operando matematicamente con vector logico}
 # ¿Cuántas palabras comunes empiezan con m?
@@ -219,9 +333,63 @@ mean(str_detect(palabras, "[aáeéiéoéuú]$"))
 #> [1] 0.546
 ```
 
-** FALTA SEGUIR CON ESTA PARTE... ME CANSO...SEGUIR MAÑANA**
 
 ## Extraer coincidencias
 str_extract() para extraer el texto de una coincidencia.
 
-** FALTA SEGUIR CON ESTA PARTE... ME CANSO...SEGUIR MAÑANA**
+Para esto usaremos una traducción de stringr::sentences que sería datos::oraciones:
+```{r oraciones}
+length(oraciones)
+
+head(oraciones)
+```
+Imagina que quieres encontrar todas las oraciones que tengan el nombre de un color. Primero, creamos un vector con nombres de colores y luego lo convertimos en una sola expresión regular:
+```{r armado de expresion regular colores}
+colores <- c("rojo", "amarillo", "verde", "azul", "marrón")
+coincidencia_color <-  str_c(colores, collapse = "|")
+coincidencia_color
+
+```
+Ahora, podemos seleccionar las oraciones que contienen un color y extraer luego el color para saber de cuál se trata:
+
+```{r str_subset str_extract combinados}
+tiene_color <- str_subset(oraciones,  coincidencia_color)
+coincidencia <- str_extract(tiene_color, coincidencia_color)
+head(coincidencia)
+
+```
+
+str_extract() solo extrae la primera coincidencia. para verlo en la práctica:
+```{r str_extract solo 1er ocurrencia}
+mas <- oraciones[str_count(oraciones, coincidencia_color) > 1]
+str_view_all(mas, coincidencia_color)
+str_extract(mas, coincidencia_color) 
+```
+
+Para extraer todas las ocurrencias utilizamos str_extract_all que devuelve una lista, también se puede utilizar el parámetro simplify = TRUE para convertir en matriz expandida
+```{r str_extract_all simplify}
+str_extract_all(mas, coincidencia_color)
+#usando simplify = TRUE devolverá una matriz con las coincidencias más cortas expandidas hasta el largo de las más extensas:
+str_extract_all(mas, coincidencia_color, simplify = TRUE)
+x <- c("a", "a b", "a b c")
+str_extract_all(x, "[a-z]", simplify = TRUE)
+```
+
+##  Otros usos de las expresiones regulares.
+Existen dos funciones útiles en R base que también utilizan expresiones regulares:
+
+* apropos() busca todos los objetos disponibles en el ambiente global (global environment). Esto es útil si no recuerdas bien el nombre de una función.
+
+```{r appropos("replace")}
+apropos("replace")
+```
+
+* dir() entrega una lista con todos los archivos en un directorio. El argumento pattern recibe una expresión regular y retorna solo los nombres de archivos que coinciden con ese patrón. Por ejemplo, puedes encontrar todos los archivos de R Markdown en el directorio actual con:
+
+```{r dir()}
+head(dir(pattern = "\\.Rmd$"))
+```
+
+## stringi
+stringr está construido sobre la base del paquete stringi. stringr es útil cuando estás aprendiendo, ya que presenta un set mínimo de funciones, que han sido elegidas cuidadosamente para manejar las funciones de manipulación de cadenas más comunes. stringi, por su parte, está diseñado para ser comprehensivo. Contiene casi todas las funciones que podrías necesitar: stringi tiene 250 funciones, frente a las 49 de stringr.
+La principal diferencia es el prefijo: str_ vs. stri_.

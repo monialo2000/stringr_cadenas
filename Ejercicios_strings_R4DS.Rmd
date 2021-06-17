@@ -188,3 +188,75 @@ telefonos <- c("(011) 4281 9176", "(32)2819176", "(32)281 9176")
 str_view(telefonos, "\\(\\d\\d\\) \\d\\d\\d \\d\\d \\d\\d")
 ```
 
+```{r}
+#2.10.1 Describe los equivalentes de ?, +, * en el formato {m,n}.
+# ? = {0,1} = una sola coincidencia
+# + = {1,} = uno o más coincidencias
+# * = {0,}= cero o más coincidencias
+```
+
+```{r}
+# Describe en palabras con qué coincidiría cada una de estas expresiones regulares: (lee con atención para ver si estamos utilizando una expresión regular o una cadena que define una expresión regular.)
+# 
+# ^.*$   empieza con cualquier caracter y termina con *
+cadena <- c("123", "una palabra", "estas son cuatro palabras", " ", "")
+str_match(cadena, "^.*$")
+
+# "\\{.+\\}"  expresion regular busca que empiece con llave q abre, cualquier caracter + y llave q cierra
+cadena <- c("uno {dos} tres", "uno {} tres", "uno {2} tres")
+str_view(cadena, "\\{.+\\}")
+
+# \d{4}-\d{2}-\d{2}  se imprime como 4 dígitos - 2 dígitos - 2 digitos
+#La expresión regular \d{4}-\d{2}-\d{2} coincide con secuencias de 4, 2 y 2 dígitos separados por un guión.
+
+numeros <- c("4444-22-22", "333-22-22", "88888888")
+str_view(numeros, "\\d{4}-\\d{2}-\\d{2}")
+
+# "\\\\{4}" expresion regular busca 4\
+
+barras <- c("\\", "\\\\", "\\\\\\", "\\\\\\\\")
+str_view(barras, "\\\\{4}")
+```
+
+```{r}
+# Crea expresiones regulares para buscar todas las palabras que:
+# 
+# Empiecen con dos consonantes.
+x <- c("bba","$$xy","zzn")
+  str_view(x, '^[bcdfghjklmnñpqrstvwxyz]{2}')
+  str_view(x, '^[^aeiou]{2}')  #esto acepta tambien otros caracteres, no solo consonantes
+  
+# Tengan tres o más vocales seguidas
+x <- c("aaa","$iiii","ba", "aa")  
+str_view(x, '[aeiou]{3,}')
+# Tengan tres o más pares de vocal-consonante seguidos.
+
+```
+
+```{r}
+# 2.11.1 Ejercicios (resuelto en Ejercicios_cadenas)
+# Describe en palabras con qué coinciden estas expresiones:
+# 
+# (.)\1\1
+# "(.)(.)\\2\\1"
+# (..)\1
+# "(.).\\1.\\1"
+# "(.)(.)(.).*\\3\\2\\1"
+```
+
+```{r}
+# 2.11.2 Construye una expresión regular que coincida con palabras que:
+# 
+# Empiecen y terminen con el mismo caracter.
+
+str_subset(c("abba", "abab", "anana", "bb"), "^(.).*\\1$") #Esta solución sirve para cualquier caracter.
+str_subset(c("*bb*", "abab", "anana", "bb"), "^([:alpha:]).*\\1$") #Si quisiéramos que solo encontrara letras 
+# 
+# Contengan un par de letras repetido (p. ej. “nacional” tiene “na” repetidos dos veces.)
+str_subset(c("abba", "abab", "anana", "bb", "abcde", "nacional"), "(..).*\\1")
+# 
+# Contengan una letra repetida en al menos tres lugares (p. ej. “característica” tiene tres “a”.)
+str_subset(c("abbab", "abab", "anana", "bb", "nooo"), "(.).*\\1.*\\1.*")
+ 
+```
+
