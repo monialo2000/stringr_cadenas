@@ -374,6 +374,161 @@ str_extract_all(mas, coincidencia_color, simplify = TRUE)
 x <- c("a", "a b", "a b c")
 str_extract_all(x, "[a-z]", simplify = TRUE)
 ```
+## Coincidencias agrupadas:
+
+Antes hablamos sobre el uso de paréntesis para aclarar la precedencia y las referencias previas al buscar coincidencias. También puedes utilizar los paréntesis para extraer una coincidencia compleja. Por ejemplo, imagina que quieres extraer los sustantivos de una oración. Como heurística, buscaremos cualquier palabra que venga después de un artículo (el, la, un, una, etc.). Definir una palabra en una expresion regular es complicado, entonces utilizaremos una aproximación simple: una secuencia de al menos un caracter que no sea un espacio.
+
+```{r buscar_sustantivo str_subset str_extract}
+sustantivo <- "(el|la|los|las|lo|un|una|unos|unas) ([^ ]+)"
+tiene_sustantivo <- oraciones %>%
+  str_subset(sustantivo) %>%
+  head(10)
+tiene_sustantivo %>% 
+  str_extract_all(sustantivo)
+```
+str_extract() nos devuelve la coincidencia completa; str_match() nos entrega cada componente. En vez de un vector de caracteres, devuelve una matriz con una columna para la coincidencia completa y una columna para cada grupo:  
+
+```{r str_match}
+tiene_sustantivo %>% 
+  str_match(sustantivo)
+```
+Si tus datos están en un tibble, suele ser más fácil utilizar tidyr::extract(). Funciona como str_match() pero requiere ponerle un nombre a las coincidencias, las que luego son puestas en columnas nuevas:
+```{r tidyr_extract}
+tibble(oracion = oraciones) %>% 
+  tidyr::extract(
+    oracion, c("articulo", "sustantivo"), "(el|la|los|las|un|una|unos|unas) ([^ ]+)", 
+    remove = FALSE
+  )
+```
+Al igual que con str_extract(), si quieres todas las coincidencias para cada cadena, tienes que utilizar str_match_all().
+
+## Remplazar coincidencias
+str_replace() y str_replace_all() te permiten remplazar coincidencias en una nueva cadena. Su uso más simple es para remplazar un patrón con una cadena fija:  
+```{r str_replace str_replace_all}
+x <- c("manzana", "pera", "banana")
+str_replace(x, "[aeiou]", "-")
+str_replace_all(x, "[aeiou]", "-")
+```
+Con str_replace_all() puedes realizar múltiples remplazos a través de un vector cuyos elementos tiene nombre (named vector):
+```{r str_replace_all named_vector}
+x <- c("1 casa", "2 autos", "3 personas")
+str_replace_all(x, c("1" = "una", "2" = "dos", "3" = "tres"))
+```
+En vez de hacer remplazos con una cadena fija, puedes utilizar referencias previas para insertar componentes de la coincidencia. En el siguiente código invertimos el orden de la segunda y la tercera palabra:
+```{r str_replace_all referencias previas}
+oraciones %>% 
+  str_replace("([^ ]+) ([^ ]+) ([^ ]+)", "\\1 \\3 \\2") %>% 
+  head(5)
+```
+
+## Divisiones
+str_split() para dividir una cadena en partes. Por ejemplo, podemos dividir oraciones en palabras:
+
+```{r str_split lista}
+oraciones %>%
+  head(5) %>% 
+  str_split(" ")
+```
+Como cada componente podría tener un número diferente de elementos, esto devuelve una lista. Si estás trabajando con vectores de extensión 1, lo más fácil es extraer el primer elemento de la lista:
+
+```{r  str_split vector}
+"a|b|c|d" %>% 
+  str_split("\\|") %>% 
+  .[[1]]
+```
+Otra opción es, al igual que con otras funciones de stringr que devuelven una lista, utilizar simplify = TRUE para obtener una matriz:
+```{r str_split matriz}
+oraciones %>%
+  head(5) %>% 
+  str_split(" ", simplify = TRUE)
+```
+También puedes indicar un número máximo de elementos:
+```{r str_split maximo elementos boundary}
+campos <- c("Nombre: Hadley", "País: NZ", "Edad: 35")
+campos %>% str_split(": ", n = 2, simplify = TRUE)
+x <- "Esta es una oración. Esta es otra oración."
+str_view_all(x, boundary("word"))  # si lo haces con str_extract_all genera lista
+```
+
+
+## Buscar coincidencias
+str_locate() y str_locate_all() te indican la posición inicial y final de una coincidencia. Son particularmente útiles cuando ninguna otra función hace exactamente lo que quieres. Puedes utilizar str_locate() para encontrar los patrones de coincidencia y str_sub() para extraerlos y/o modificarlos.
+
+```{r str_locate str_locate_all}
+
+```
+
+## Otro tipo de patrones
+Cuando utilizas un patrón que es una cadena, este automáticamente es encapsulado en la función regex() (regular expression). 
+
+Puedes utilizar los otros argumentos de regex() para controlar los detalles de la coincidencia:  
+* ´ignore_case = TRUE´ permite que la búsqueda coincida tanto con caracteres en mayúscula como en minúscula. Este argumento siempre utiliza los parámetros de tu locale.  
+* ´multiline = TRUE´ permite que ^ y $ coincidan con el inicio y fin de cada línea, en vez del inicio y fin de la cadena completa.  
+* ´comments = TRUE´ te permite utilizar comentarios y espacios en blanco para hacer más entendibles las expresiones regulares complejas. Los espacios son ignorados, al igual que todo lo que está después de #. Para coincidir un espacio de manera literal, tendrías que "escaparlo: "\\ ".  
+* ´dotall = TRUE´ permite que . coincida con todo, incluidos los saltos de línea (\n).  
+
+```{r regex}
+str_view(frutas, "nana")
+# Es un atajo de
+str_view(frutas, regex("nana"))
+bananas <- c("banana", "Banana", "BANANA")
+str_view(bananas, "banana")
+str_view(bananas, regex("banana", ignore_case = TRUE))
+x <- "Línea 1\nLínea 2\nLínea 3"
+str_extract_all(x, "^Línea")[[1]]
+str_extract_all(x, regex("^Línea", multiline = TRUE))[[1]]
+telefono <- regex("
+  \\(?     # paréntesis inicial opcional
+  (\\d{3}) # código de área
+  [) -]?   # paréntesis, espacio o guión inicial opcional
+  (\\d{3}) # otros tres números
+  [ -]?    # espacio o guión opcional
+  (\\d{3}) # otros tres números
+  ", comments = TRUE)
+str_match("514-791-8141", telefono)
+```
+
+Existen otras tres funciones que puedes utilizar en vez de regex():  
+* ´fixed():´ busca una coincidencia exacta de la secuencia de bytes especificada. Ignora todas las expresiones regulares especiales y opera a un nivel muy bajo. Esto te permite evitar formas de “escapado” complejas y puede ser mucho más rápida que las expresiones regulares. La comparación utilizando microbenchmark muestra que fixed() es casi dos veces más rápida.  
+**IMPORTANTE: ten precaución al utilizar fixed() con datos que no estén en inglés. Puede causar problemas porque muchas veces existen múltiples formas de representar un mismo caracter. Por ejemplo, hay dos formas de difinir “á”: como un solo caracter o como una “a” con un acento:**  
+
+* ´coll():´ compara cadenas usando reglas de secuenciación (collation) estándar. Esto es útil para buscar coincidencias que sean insensibles a mayúsculas y minúsculas. Ten en cuenta que coll() incluye un parámetro para el locale, Lamentablemente, se utilizan diferentes reglas en diferentes partes del mundo.
+
+```{r regex fixed problemas}
+#install.packages(microbenchmark)
+# microbenchmark::microbenchmark(
+  # fixed = str_detect(oraciones, fixed("la")),
+  # regex = str_detect(oraciones, "la"),
+  # times = 20
+#)
+
+a1 <- "\u00e1"
+a2 <- "a\u0301"
+c(a1, a2)
+a1 == a2 #renderean de manera idéntica, pero como están definidas de manera distinta, dan false
+
+# Esto quiere decir que también tienes que prestar atención a esas 
+# diferencias al buscar coincidencias insensibles a mayúsculas y
+# minúsculas
+i <- c("I", "İ", "i", "ı")
+str_subset(i, coll("i", ignore_case = TRUE))
+str_subset(i, coll("i", ignore_case = TRUE, locale = "tr"))
+```
+Tanto fixed() como regex() tienen argumentos para ignorar la diferencia entre mayúsculas y minúsculas (ignore_case); sin embargo, no te permiten elegir tu locale: siempre utilizan el que está definido por defecto. Puedes ver cuál se está usando con el siguiente código. Pronto hablaremos más sobre el paquete stringi.
+
+```{r stringi}
+stringi::stri_locale_info()
+```
+
+Una desventaja de coll() es la velocidad. Debido a que las reglas para reconocer qué caracteres son iguales suelen ser complicadas, coll() es relativamente más lenta al compararla con regex() y fixed().  
+
+Como viste con str_split(), puedes utilizar boundary() para coincidir límites. También puedes utilizarla con otras funciones:  
+```{r boundary}
+x <- "Esta es una oración."
+str_view_all(x, boundary("word"))
+str_extract_all(x, boundary("word")) #> [[1]] #> [1] "Esta" "es" "una" "oración"
+```
+
 
 ##  Otros usos de las expresiones regulares.
 Existen dos funciones útiles en R base que también utilizan expresiones regulares:

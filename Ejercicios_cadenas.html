@@ -2674,14 +2674,14 @@ str_pad(&quot;abc&quot;, 5, side = &quot;both&quot;)</code></pre>
 Anclas : * ^ para buscar la coincidencia al inicio de la cadena. * $ para buscar la coincidencia al final de la cadena.</p>
 <pre class="r"><code>x &lt;- c(&quot;manzana&quot;, &quot;banana&quot;, &quot;pera&quot;)
 str_view(x, &quot;an&quot;)   # coincidencia simple</code></pre>
-<div id="htmlwidget-0e26270b9d8dac2ad2bd" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0e26270b9d8dac2ad2bd">{"x":{"html":"<ul>\n  <li>m<span class='match'>an<\/span>zana<\/li>\n  <li>b<span class='match'>an<\/span>ana<\/li>\n  <li>pera<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-f08e28e0beb6708e4d23" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f08e28e0beb6708e4d23">{"x":{"html":"<ul>\n  <li>m<span class='match'>an<\/span>zana<\/li>\n  <li>b<span class='match'>an<\/span>ana<\/li>\n  <li>pera<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>str_view(x, &quot;.a.&quot;) # indica cualquier caracter (excepto salto de linea) antes y después de a</code></pre>
-<div id="htmlwidget-86e04ec47b4708b3c8e7" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-86e04ec47b4708b3c8e7">{"x":{"html":"<ul>\n  <li><span class='match'>man<\/span>zana<\/li>\n  <li><span class='match'>ban<\/span>ana<\/li>\n  <li>pera<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-6d6967a2d21f000c6649" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6d6967a2d21f000c6649">{"x":{"html":"<ul>\n  <li><span class='match'>man<\/span>zana<\/li>\n  <li><span class='match'>ban<\/span>ana<\/li>\n  <li>pera<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>str_view(c(&quot;abc&quot;, &quot;a.c&quot;, &quot;bef&quot;), &quot;a\\.c&quot;) # si se quiere buscar de forma explícita el . se necesitan \\ (expressión regular)</code></pre>
-<div id="htmlwidget-d1bab8957216dd16329e" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d1bab8957216dd16329e">{"x":{"html":"<ul>\n  <li>abc<\/li>\n  <li><span class='match'>a.c<\/span><\/li>\n  <li>bef<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-98faae179a345114402c" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-98faae179a345114402c">{"x":{"html":"<ul>\n  <li>abc<\/li>\n  <li><span class='match'>a.c<\/span><\/li>\n  <li>bef<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code># Para crear una expresión regular necesitamos \\
 punto &lt;- &quot;\\.&quot;
 
@@ -2690,22 +2690,22 @@ x &lt;- &quot;a\\b&quot;
 writeLines(x)</code></pre>
 <pre><code>## a\b</code></pre>
 <pre class="r"><code>str_view(x, &quot;\\\\&quot;)</code></pre>
-<div id="htmlwidget-e9b013fd6f928aa0fc9c" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e9b013fd6f928aa0fc9c">{"x":{"html":"<ul>\n  <li>a<span class='match'>\\<\/span>b<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-13dabff4c009195b927e" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-13dabff4c009195b927e">{"x":{"html":"<ul>\n  <li>a<span class='match'>\\<\/span>b<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>x &lt;- c(&quot;arandano&quot;, &quot;banana&quot;, &quot;pera&quot;)
 str_view(x,  &quot;^a&quot; )</code></pre>
-<div id="htmlwidget-9bfa438eb832b6114bcf" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-9bfa438eb832b6114bcf">{"x":{"html":"<ul>\n  <li><span class='match'>a<\/span>randano<\/li>\n  <li>banana<\/li>\n  <li>pera<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-722ccd3f119e7cc9e21c" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-722ccd3f119e7cc9e21c">{"x":{"html":"<ul>\n  <li><span class='match'>a<\/span>randano<\/li>\n  <li>banana<\/li>\n  <li>pera<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>str_view(x, &quot;a$&quot;)</code></pre>
-<div id="htmlwidget-8b9e7ab368e6cbd3b8a1" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8b9e7ab368e6cbd3b8a1">{"x":{"html":"<ul>\n  <li>arandano<\/li>\n  <li>banan<span class='match'>a<\/span><\/li>\n  <li>per<span class='match'>a<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-eef6748438e96cf4da64" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-eef6748438e96cf4da64">{"x":{"html":"<ul>\n  <li>arandano<\/li>\n  <li>banan<span class='match'>a<\/span><\/li>\n  <li>per<span class='match'>a<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>x &lt;- c(&quot;pie de manzana&quot;, &quot;manzana&quot;, &quot;queque de manzana&quot;)
 str_view(x, &quot;manzana&quot;)</code></pre>
-<div id="htmlwidget-e6431695be6c93f9c239" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e6431695be6c93f9c239">{"x":{"html":"<ul>\n  <li>pie de <span class='match'>manzana<\/span><\/li>\n  <li><span class='match'>manzana<\/span><\/li>\n  <li>queque de <span class='match'>manzana<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-814ce17dac829fc45b84" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-814ce17dac829fc45b84">{"x":{"html":"<ul>\n  <li>pie de <span class='match'>manzana<\/span><\/li>\n  <li><span class='match'>manzana<\/span><\/li>\n  <li>queque de <span class='match'>manzana<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>str_view(x, &quot;^manzana$&quot;) #para buscar exactamente sin nada más delante ni detrás.</code></pre>
-<div id="htmlwidget-00954e9cb1be82d8f647" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-00954e9cb1be82d8f647">{"x":{"html":"<ul>\n  <li>pie de manzana<\/li>\n  <li><span class='match'>manzana<\/span><\/li>\n  <li>queque de manzana<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-be32d663013ba4950321" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-be32d663013ba4950321">{"x":{"html":"<ul>\n  <li>pie de manzana<\/li>\n  <li><span class='match'>manzana<\/span><\/li>\n  <li>queque de manzana<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="clases-de-caracteres-y-alternativas" class="section level2">
 <h2>Clases de caracteres y alternativas:</h2>
@@ -2719,14 +2719,14 @@ str_view(x, &quot;manzana&quot;)</code></pre>
 <p>Utilizar una clase de caracter que contenga en su interior un solo caracter es una alternativa a la barra invertida cuando quieres incluir un solo metacaracter en la expresión regular.</p>
 <pre class="r"><code># Buscar de forma literal un caracter que usualmente tiene un significado especial en una expresión regular - PATRON
 str_view(c(&quot;abc&quot;, &quot;a.c&quot;, &quot;a*c&quot;, &quot;a c&quot;), &quot;a[.]c&quot;)</code></pre>
-<div id="htmlwidget-d34898c075a23390d221" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d34898c075a23390d221">{"x":{"html":"<ul>\n  <li>abc<\/li>\n  <li><span class='match'>a.c<\/span><\/li>\n  <li>a*c<\/li>\n  <li>a c<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-296adce1814d77b47c23" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-296adce1814d77b47c23">{"x":{"html":"<ul>\n  <li>abc<\/li>\n  <li><span class='match'>a.c<\/span><\/li>\n  <li>a*c<\/li>\n  <li>a c<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>str_view(c(&quot;abc&quot;, &quot;a.c&quot;, &quot;a*c&quot;, &quot;a c&quot;), &quot;.[*]c&quot;)</code></pre>
-<div id="htmlwidget-5500ef5259f6a3591057" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5500ef5259f6a3591057">{"x":{"html":"<ul>\n  <li>abc<\/li>\n  <li>a.c<\/li>\n  <li><span class='match'>a*c<\/span><\/li>\n  <li>a c<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-58e8dd55ac674de0434d" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-58e8dd55ac674de0434d">{"x":{"html":"<ul>\n  <li>abc<\/li>\n  <li>a.c<\/li>\n  <li><span class='match'>a*c<\/span><\/li>\n  <li>a c<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>str_view(c(&quot;abc&quot;, &quot;a.c&quot;, &quot;a*c&quot;, &quot;a c&quot;), &quot;a[ ]&quot;)</code></pre>
-<div id="htmlwidget-04ec1a0331b4cb221ab1" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-04ec1a0331b4cb221ab1">{"x":{"html":"<ul>\n  <li>abc<\/li>\n  <li>a.c<\/li>\n  <li>a*c<\/li>\n  <li><span class='match'>a <\/span>c<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-77c261f6c665330cd488" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-77c261f6c665330cd488">{"x":{"html":"<ul>\n  <li>abc<\/li>\n  <li>a.c<\/li>\n  <li>a*c<\/li>\n  <li><span class='match'>a <\/span>c<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <p><strong>funciona con los siguientes metacaracteres de las expresiones regulares: $ . | ? * + ( ) [ { pero estos otros deben manejarse con \ para escaparlos: ] \ ^ - </strong></p>
 <p>Hay un buen numero de clases predefinidas que puedes usar dentro de <code>[]</code>:</p>
 <ul>
@@ -2744,11 +2744,11 @@ str_view(c(&quot;abc&quot;, &quot;a.c&quot;, &quot;a*c&quot;, &quot;a c&quot;), 
 </ul>
 <p>##Disyunción Sirve para elegir entre uno más patrones alternativos. Por ej. abc|d..a coincide tanto con “abc” como con “duna”.</p>
 <pre class="r"><code>str_view(c(&quot;cómo&quot;, &quot;como&quot;), &quot;c(ó|o)mo&quot;)</code></pre>
-<div id="htmlwidget-868ff56c62178768d3dc" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-868ff56c62178768d3dc">{"x":{"html":"<ul>\n  <li><span class='match'>cómo<\/span><\/li>\n  <li><span class='match'>como<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-ac830bad5d497eef9a5e" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ac830bad5d497eef9a5e">{"x":{"html":"<ul>\n  <li><span class='match'>cómo<\/span><\/li>\n  <li><span class='match'>como<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>str_view(c(&quot;abc&quot;, &quot;abcyz&quot;, &quot;abxyz&quot;, &quot;xyz&quot;), &quot;abc|xyz&quot;)</code></pre>
-<div id="htmlwidget-98d16f1ec235e8a857ff" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-98d16f1ec235e8a857ff">{"x":{"html":"<ul>\n  <li><span class='match'>abc<\/span><\/li>\n  <li><span class='match'>abc<\/span>yz<\/li>\n  <li>ab<span class='match'>xyz<\/span><\/li>\n  <li><span class='match'>xyz<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-92fb9c88de3988686af5" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-92fb9c88de3988686af5">{"x":{"html":"<ul>\n  <li><span class='match'>abc<\/span><\/li>\n  <li><span class='match'>abc<\/span>yz<\/li>\n  <li>ab<span class='match'>xyz<\/span><\/li>\n  <li><span class='match'>xyz<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="repetición" class="section level2">
 <h2>Repetición</h2>
@@ -2760,59 +2760,59 @@ str_view(c(&quot;abc&quot;, &quot;a.c&quot;, &quot;a*c&quot;, &quot;a c&quot;), 
 </ul>
 <pre class="r"><code>x &lt;- &quot;1888 es el año más largo en números romanos: MDCCCLXXXVIII&quot;
 str_view(x, &quot;CC?&quot;)</code></pre>
-<div id="htmlwidget-af4c43e2a360d1b53704" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-af4c43e2a360d1b53704">{"x":{"html":"<ul>\n  <li>1888 es el año más largo en números romanos: MD<span class='match'>CC<\/span>CLXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-5b497c7e55bff35ede6c" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5b497c7e55bff35ede6c">{"x":{"html":"<ul>\n  <li>1888 es el año más largo en números romanos: MD<span class='match'>CC<\/span>CLXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>str_view(x, &quot;CC+&quot;)</code></pre>
-<div id="htmlwidget-e4b77eb614d28b4025d1" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e4b77eb614d28b4025d1">{"x":{"html":"<ul>\n  <li>1888 es el año más largo en números romanos: MD<span class='match'>CCC<\/span>LXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-c916a17ad6b9c29bb3fb" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c916a17ad6b9c29bb3fb">{"x":{"html":"<ul>\n  <li>1888 es el año más largo en números romanos: MD<span class='match'>CCC<\/span>LXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>str_view(x, &quot;CC:&quot;)</code></pre>
-<div id="htmlwidget-ffe2eeea58b2aa0a8746" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ffe2eeea58b2aa0a8746">{"x":{"html":"<ul>\n  <li>1888 es el año más largo en números romanos: MDCCCLXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-b436d384f5d9102fc0c9" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b436d384f5d9102fc0c9">{"x":{"html":"<ul>\n  <li>1888 es el año más largo en números romanos: MDCCCLXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <p>También puedes especificar el número de coincidencias que quieres encontrar de manera precisa:</p>
 <p>{n}: exactamente n {n,}: n o más {,m}: no más de m {n,m}: entre n y m</p>
 <pre class="r"><code>str_view(x, &quot;C{2}&quot;)</code></pre>
-<div id="htmlwidget-707804df70d9be0c73b1" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-707804df70d9be0c73b1">{"x":{"html":"<ul>\n  <li>1888 es el año más largo en números romanos: MD<span class='match'>CC<\/span>CLXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-845af1deb041cddf8a14" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-845af1deb041cddf8a14">{"x":{"html":"<ul>\n  <li>1888 es el año más largo en números romanos: MD<span class='match'>CC<\/span>CLXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>str_view(x, &quot;C{2,}&quot;)</code></pre>
-<div id="htmlwidget-ee51a8ba9a030dc7ee24" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ee51a8ba9a030dc7ee24">{"x":{"html":"<ul>\n  <li>1888 es el año más largo en números romanos: MD<span class='match'>CCC<\/span>LXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-4d482d5997f604f79c38" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4d482d5997f604f79c38">{"x":{"html":"<ul>\n  <li>1888 es el año más largo en números romanos: MD<span class='match'>CCC<\/span>LXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>str_view(x, &quot;C{1,4}&quot;) # como {,4}me da error</code></pre>
-<div id="htmlwidget-67f12ad2af8a9973dd3a" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-67f12ad2af8a9973dd3a">{"x":{"html":"<ul>\n  <li>1888 es el año más largo en números romanos: MD<span class='match'>CCC<\/span>LXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-25241db87bd001232152" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-25241db87bd001232152">{"x":{"html":"<ul>\n  <li>1888 es el año más largo en números romanos: MD<span class='match'>CCC<\/span>LXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>str_view(x, &quot;C{2,3}&quot;) # ojo no dejar blanco entre coma y el otro valor</code></pre>
-<div id="htmlwidget-ebf13ae2e0e9900d73d9" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ebf13ae2e0e9900d73d9">{"x":{"html":"<ul>\n  <li>1888 es el año más largo en números romanos: MD<span class='match'>CCC<\/span>LXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-237f8a1ba3b113a29d82" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-237f8a1ba3b113a29d82">{"x":{"html":"<ul>\n  <li>1888 es el año más largo en números romanos: MD<span class='match'>CCC<\/span>LXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="agrupamiento-y-referencias-previas" class="section level2">
 <h2>Agrupamiento y referencias previas</h2>
 <p>Anteriormente aprendiste sobre el uso de paréntesis para desambiguar expresiones complejas. Los paréntesis también sirven para crear un grupo de captura numerado (número 1, 2, etc.). Un grupo de captura guarda la parte de la cadena que coincide con la parte de la expresión regular entre paréntesis. Puedes referirte al mismo texto tal como fue guardado en un grupo de captura utilizando referencias previas, como \1, \2 etc. Por ejemplo, la siguiente expresión regular busca todas las frutas que tengan un par de letras repetido.</p>
 <pre class="r"><code>y &lt;- c(&quot;amdamdxx&quot;, &quot;recdcxcdcx&quot;)
 str_view(frutas, &quot;(..)\\1&quot;, match = TRUE)</code></pre>
-<div id="htmlwidget-47370ff0991a081f194e" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-47370ff0991a081f194e">{"x":{"html":"<ul>\n  <li>b<span class='match'>anan<\/span>a<\/li>\n  <li><span class='match'>papa<\/span>ya<\/li>\n  <li><span class='match'>anan<\/span>á<\/li>\n  <li><span class='match'>coco<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-2c636902c40745832c6c" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2c636902c40745832c6c">{"x":{"html":"<ul>\n  <li>b<span class='match'>anan<\/span>a<\/li>\n  <li><span class='match'>papa<\/span>ya<\/li>\n  <li><span class='match'>anan<\/span>á<\/li>\n  <li><span class='match'>coco<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>str_view(y, &quot;(...)\\1&quot;, match = TRUE)</code></pre>
-<div id="htmlwidget-4f9f36ec9b90c4c451a9" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4f9f36ec9b90c4c451a9">{"x":{"html":"<ul>\n  <li><span class='match'>amdamd<\/span>xx<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-7ff174482433a2e098ef" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7ff174482433a2e098ef">{"x":{"html":"<ul>\n  <li><span class='match'>amdamd<\/span>xx<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>#La expresión regular (.)\1\1 coincide con cualquier caracter repetido tres veces seguidas.
 str_view(c(&quot;a&quot;, &quot;aa&quot;, &quot;aaa&quot;, &quot;aaaa&quot;), &quot;(.)\\1\\1&quot;)</code></pre>
-<div id="htmlwidget-2616f1e3fd4af42078ed" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2616f1e3fd4af42078ed">{"x":{"html":"<ul>\n  <li>a<\/li>\n  <li>aa<\/li>\n  <li><span class='match'>aaa<\/span><\/li>\n  <li><span class='match'>aaa<\/span>a<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-28e5d9deb83f283d3223" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-28e5d9deb83f283d3223">{"x":{"html":"<ul>\n  <li>a<\/li>\n  <li>aa<\/li>\n  <li><span class='match'>aaa<\/span><\/li>\n  <li><span class='match'>aaa<\/span>a<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>#La cadena &quot;(.)(.)\\2\\1&quot; coincide con los dos caracteres capturados seguidos de los mismos dos caracteres pero en orden inverso:
 str_view(c(&quot;abba&quot;, &quot;abab&quot;), &quot;(.)(.)\\2\\1&quot;)</code></pre>
-<div id="htmlwidget-a2b1a7f716bdaf68608b" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a2b1a7f716bdaf68608b">{"x":{"html":"<ul>\n  <li><span class='match'>abba<\/span><\/li>\n  <li>abab<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-50b094c519f6b5d1677c" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-50b094c519f6b5d1677c">{"x":{"html":"<ul>\n  <li><span class='match'>abba<\/span><\/li>\n  <li>abab<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>#La expresión regular (..)\1 coincide con un par de letras que se repite dos veces:
 str_view(c(&quot;abba&quot;, &quot;abab&quot;), &quot;(..)\\1&quot;)</code></pre>
-<div id="htmlwidget-0b2f3c05e597a750447a" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0b2f3c05e597a750447a">{"x":{"html":"<ul>\n  <li>abba<\/li>\n  <li><span class='match'>abab<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-63fcc30830a9bfe3cc8c" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-63fcc30830a9bfe3cc8c">{"x":{"html":"<ul>\n  <li>abba<\/li>\n  <li><span class='match'>abab<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>#La cadena &quot;(.).\\1.\\1&quot; coicide con la secuencia: caracter capturado, otro caracter, caracter capturado, otro caracter, caracter capturado:
 str_view(c(&quot;babab&quot;, &quot;babeb&quot;, &quot;abab&quot;), &quot;(.).\\1.\\1&quot;)</code></pre>
-<div id="htmlwidget-4f52329927de98a87e9e" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4f52329927de98a87e9e">{"x":{"html":"<ul>\n  <li><span class='match'>babab<\/span><\/li>\n  <li><span class='match'>babeb<\/span><\/li>\n  <li>abab<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-fc2e5dca0f00659e9dec" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-fc2e5dca0f00659e9dec">{"x":{"html":"<ul>\n  <li><span class='match'>babab<\/span><\/li>\n  <li><span class='match'>babeb<\/span><\/li>\n  <li>abab<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>#La cadena &quot;(.)(.)(.).*\\3\\2\\1&quot; coincide con los tres caracteres capturados, cero o más de otros caracteres y luego los tres caracteres capturados en orden inverso:
 str_view(c(&quot;abcdefgcba&quot;, &quot;abccba&quot;, &quot;abcabc&quot;), &quot;(.)(.)(.).*\\3\\2\\1&quot;)</code></pre>
-<div id="htmlwidget-d11ff9cf2248e7d9d269" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d11ff9cf2248e7d9d269">{"x":{"html":"<ul>\n  <li><span class='match'>abcdefgcba<\/span><\/li>\n  <li><span class='match'>abccba<\/span><\/li>\n  <li>abcabc<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-390775dff02aa7eef8dd" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-390775dff02aa7eef8dd">{"x":{"html":"<ul>\n  <li><span class='match'>abcdefgcba<\/span><\/li>\n  <li><span class='match'>abccba<\/span><\/li>\n  <li>abcabc<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="herramientas" class="section level2">
 <h2>Herramientas</h2>
@@ -2850,8 +2850,8 @@ df %&gt;%
 <pre><code>## [1] 2</code></pre>
 <pre class="r"><code>#&gt; [1] 2
 str_view_all(&quot;abababa&quot;, &quot;aba&quot;)</code></pre>
-<div id="htmlwidget-8b9da0d409f74ca1e5e7" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8b9da0d409f74ca1e5e7">{"x":{"html":"<ul>\n  <li><span class='match'>aba<\/span>b<span class='match'>aba<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-92eea9076a2a80c596ca" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-92eea9076a2a80c596ca">{"x":{"html":"<ul>\n  <li><span class='match'>aba<\/span>b<span class='match'>aba<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <p>**Toma nota sobre el uso de str_view_all(). Como aprenderás dentro de poco, muchas funciones de stringr vienen en pares: una función trabaja con una sola coincidencia y la otra con todas. La segunda función tendrá el sufijo _all (todas).**</p>
 <p>str_count(): indica cuántas coincidencias hay en una cadena.</p>
 <pre class="r"><code>x &lt;- c(&quot;manzana&quot;, &quot;plátano&quot;, &quot;pera&quot;)
@@ -2907,8 +2907,8 @@ head(coincidencia)</code></pre>
 <p>str_extract() solo extrae la primera coincidencia. para verlo en la práctica:</p>
 <pre class="r"><code>mas &lt;- oraciones[str_count(oraciones, coincidencia_color) &gt; 1]
 str_view_all(mas, coincidencia_color)</code></pre>
-<div id="htmlwidget-0a098918dd88cd2cdc86" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0a098918dd88cd2cdc86">{"x":{"html":"<ul>\n  <li>Instalaron <span class='match'>azul<\/span>ejos <span class='match'>verde<\/span>s en la cocina.<\/li>\n  <li>Si ar<span class='match'>rojo<\/span> la taza <span class='match'>azul<\/span> al suelo se romperá.<\/li>\n  <li>Las hojas se vuelven de color <span class='match'>marrón<\/span> y <span class='match'>amarillo<\/span> en el otoño.<\/li>\n  <li>La luz <span class='match'>verde<\/span> en la caja <span class='match'>marrón<\/span> parpadeaba.<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-7979c3d1463ba348324b" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7979c3d1463ba348324b">{"x":{"html":"<ul>\n  <li>Instalaron <span class='match'>azul<\/span>ejos <span class='match'>verde<\/span>s en la cocina.<\/li>\n  <li>Si ar<span class='match'>rojo<\/span> la taza <span class='match'>azul<\/span> al suelo se romperá.<\/li>\n  <li>Las hojas se vuelven de color <span class='match'>marrón<\/span> y <span class='match'>amarillo<\/span> en el otoño.<\/li>\n  <li>La luz <span class='match'>verde<\/span> en la caja <span class='match'>marrón<\/span> parpadeaba.<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>str_extract(mas, coincidencia_color) </code></pre>
 <pre><code>## [1] &quot;azul&quot;   &quot;rojo&quot;   &quot;marrón&quot; &quot;verde&quot;</code></pre>
 <p>Para extraer todas las ocurrencias utilizamos str_extract_all que devuelve una lista, también se puede utilizar el parámetro simplify = TRUE para convertir en matriz expandida</p>
@@ -2937,6 +2937,243 @@ str_extract_all(x, &quot;[a-z]&quot;, simplify = TRUE)</code></pre>
 ## [1,] &quot;a&quot;  &quot;&quot;   &quot;&quot;  
 ## [2,] &quot;a&quot;  &quot;b&quot;  &quot;&quot;  
 ## [3,] &quot;a&quot;  &quot;b&quot;  &quot;c&quot;</code></pre>
+</div>
+<div id="coincidencias-agrupadas" class="section level2">
+<h2>Coincidencias agrupadas:</h2>
+<p>Antes hablamos sobre el uso de paréntesis para aclarar la precedencia y las referencias previas al buscar coincidencias. También puedes utilizar los paréntesis para extraer una coincidencia compleja. Por ejemplo, imagina que quieres extraer los sustantivos de una oración. Como heurística, buscaremos cualquier palabra que venga después de un artículo (el, la, un, una, etc.). Definir una palabra en una expresion regular es complicado, entonces utilizaremos una aproximación simple: una secuencia de al menos un caracter que no sea un espacio.</p>
+<pre class="r"><code>sustantivo &lt;- &quot;(el|la|los|las|lo|un|una|unos|unas) ([^ ]+)&quot;
+tiene_sustantivo &lt;- oraciones %&gt;%
+  str_subset(sustantivo) %&gt;%
+  head(10)
+tiene_sustantivo %&gt;% 
+  str_extract_all(sustantivo)</code></pre>
+<pre><code>## [[1]]
+## [1] &quot;los de&quot;   &quot;la roja.&quot;
+## 
+## [[2]]
+## [1] &quot;el camión&quot;
+## 
+## [[3]]
+## [1] &quot;la mejor&quot;   &quot;la semana.&quot;
+## 
+## [[4]]
+## [1] &quot;la cuenta&quot; &quot;la tienda&quot; &quot;el último&quot;
+## 
+## [[5]]
+## [1] &quot;las ruinas.&quot;
+## 
+## [[6]]
+## [1] &quot;la hoja&quot;  &quot;el fondo&quot;
+## 
+## [[7]]
+## [1] &quot;la cocina.&quot;
+## 
+## [[8]]
+## [1] &quot;la taza&quot; &quot;lo se&quot;  
+## 
+## [[9]]
+## [1] &quot;el tanque.&quot;
+## 
+## [[10]]
+## [1] &quot;el calor&quot; &quot;el sol.&quot;</code></pre>
+<p>str_extract() nos devuelve la coincidencia completa; str_match() nos entrega cada componente. En vez de un vector de caracteres, devuelve una matriz con una columna para la coincidencia completa y una columna para cada grupo:</p>
+<pre class="r"><code>tiene_sustantivo %&gt;% 
+  str_match(sustantivo)</code></pre>
+<pre><code>##       [,1]          [,2]  [,3]     
+##  [1,] &quot;los de&quot;      &quot;los&quot; &quot;de&quot;     
+##  [2,] &quot;el camión&quot;   &quot;el&quot;  &quot;camión&quot; 
+##  [3,] &quot;la mejor&quot;    &quot;la&quot;  &quot;mejor&quot;  
+##  [4,] &quot;la cuenta&quot;   &quot;la&quot;  &quot;cuenta&quot; 
+##  [5,] &quot;las ruinas.&quot; &quot;las&quot; &quot;ruinas.&quot;
+##  [6,] &quot;la hoja&quot;     &quot;la&quot;  &quot;hoja&quot;   
+##  [7,] &quot;la cocina.&quot;  &quot;la&quot;  &quot;cocina.&quot;
+##  [8,] &quot;la taza&quot;     &quot;la&quot;  &quot;taza&quot;   
+##  [9,] &quot;el tanque.&quot;  &quot;el&quot;  &quot;tanque.&quot;
+## [10,] &quot;el calor&quot;    &quot;el&quot;  &quot;calor&quot;</code></pre>
+<p>Si tus datos están en un tibble, suele ser más fácil utilizar tidyr::extract(). Funciona como str_match() pero requiere ponerle un nombre a las coincidencias, las que luego son puestas en columnas nuevas:</p>
+<pre class="r"><code>tibble(oracion = oraciones) %&gt;% 
+  tidyr::extract(
+    oracion, c(&quot;articulo&quot;, &quot;sustantivo&quot;), &quot;(el|la|los|las|un|una|unos|unas) ([^ ]+)&quot;, 
+    remove = FALSE
+  )</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["oracion"],"name":[1],"type":["chr"],"align":["left"]},{"label":["articulo"],"name":[2],"type":["chr"],"align":["left"]},{"label":["sustantivo"],"name":[3],"type":["chr"],"align":["left"]}],"data":[{"1":"Las casas están construidas de ladrillos de arcilla roja.","2":"los","3":"de"},{"1":"La caja fue arrojada al lado del camión estacionado.","2":"el","3":"camión"},{"1":"El domingo es la mejor parte de la semana.","2":"la","3":"mejor"},{"1":"Agrega a la cuenta de la tienda hasta el último centavo.","2":"la","3":"cuenta"},{"1":"Nueve hombres fueron contratados para excavar las ruinas.","2":"las","3":"ruinas."},{"1":"Pega la hoja en el fondo azul oscuro.","2":"la","3":"hoja"},{"1":"Instalaron azulejos verdes en la cocina.","2":"la","3":"cocina."},{"1":"Si arrojo la taza azul al suelo se romperá.","2":"la","3":"taza"},{"1":"Dos peces azules nadaban en el tanque.","2":"el","3":"tanque."},{"1":"El ancho camino brillaba bajo el calor del sol.","2":"el","3":"calor"},{"1":"Una voluta de nube flotaba en el aire azul.","2":"el","3":"aire"},{"1":"Las hojas se vuelven de color marrón y amarillo en el otoño.","2":"el","3":"otoño."},{"1":"Él ordenó tarta de melocotón con helado.","2":"NA","3":"NA"},{"1":"La mancha en el papel secante fue hecha por la tinta verde.","2":"el","3":"papel"},{"1":"Había barro salpicado en la parte delantera de su camisa blanca.","2":"la","3":"parte"},{"1":"El cojín del sofá es de color rojo y de peso ligero.","2":"el","3":"sofá"},{"1":"El cielo de la mañana era claro y azul brillante.","2":"la","3":"mañana"},{"1":"El médico lo curó con estas dos pastillas.","2":"NA","3":"NA"},{"1":"Podían reír a pesar de que estaban tristes.","2":"NA","3":"NA"},{"1":"El tercer acto era aburrido y cansó a los actores.","2":"los","3":"actores."},{"1":"Una grulla azul es una ave zancuda y alta.","2":"la","3":"azul"},{"1":"Los cables expuestos deben mantenerse cubiertos.","2":"NA","3":"NA"},{"1":"El choque ocurrió cerca del banco en la calle principal.","2":"el","3":"banco"},{"1":"La lámpara brillaba con una llama verde y continua.","2":"una","3":"llama"},{"1":"El príncipe ordenó que le cortaran la cabeza.","2":"la","3":"cabeza."},{"1":"La planta creció grande y verde en la ventana.","2":"la","3":"ventana."},{"1":"El lazo púrpura tenía diez años.","2":"NA","3":"NA"},{"1":"Recuéstate y relájate en la hierba fresca y verde.","2":"la","3":"hierba"},{"1":"El lago brillaba bajo el sol cálido y rojo.","2":"el","3":"sol"},{"1":"Marca el lugar con un cartel pintado de rojo.","2":"el","3":"lugar"},{"1":"El humo salía de cada grieta.","2":"NA","3":"NA"},{"1":"La cubierta del sofá y las cortinas de la sala eran azules.","2":"el","3":"sofá"},{"1":"Ofreció evidencia a través de tres gráficos.","2":"NA","3":"NA"},{"1":"Un hombre con un suéter azul se sentó en el escritorio.","2":"un","3":"suéter"},{"1":"El sorbo de té revive a su amigo cansado.","2":"NA","3":"NA"},{"1":"Una gruesa capa de pintura negra cubría todo.","2":"NA","3":"NA"},{"1":"Dibuja el gráfico con líneas negras gruesas.","2":"el","3":"gráfico"},{"1":"La pequeña lámpara de neón de color rojo se apagó.","2":"NA","3":"NA"},{"1":"Pinta los encajes en la pared de color verde opaco.","2":"los","3":"encajes"},{"1":"Despiértate y levántate, camina hacia el verde exterior.","2":"el","3":"verde"},{"1":"La luz verde en la caja marrón parpadeaba.","2":"la","3":"caja"},{"1":"Puso su último cartucho en la pistola y disparó.","2":"la","3":"pistola"},{"1":"El carnero asustó a los niños de la escuela.","2":"los","3":"niños"},{"1":"Corta una delgada lámina de la almohadilla amarilla.","2":"una","3":"delgada"},{"1":"Llovieron centavos de todos lados.","2":"NA","3":"NA"},{"1":"El cielo en el oeste se tiñe de rojo anaranjado.","2":"el","3":"oeste"},{"1":"El granizo repiqueteaba en la hierba marrón quemada.","2":"la","3":"hierba"},{"1":"La gran manzana roja cayó al suelo.","2":"NA","3":"NA"},{"1":"El olor de la primavera hace que los corazones jóvenes salten.","2":"la","3":"primavera"},{"1":"Cada palabra y cada frase que habla es cierta.","2":"la","3":"es"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Al igual que con str_extract(), si quieres todas las coincidencias para cada cadena, tienes que utilizar str_match_all().</p>
+</div>
+<div id="remplazar-coincidencias" class="section level2">
+<h2>Remplazar coincidencias</h2>
+<p>str_replace() y str_replace_all() te permiten remplazar coincidencias en una nueva cadena. Su uso más simple es para remplazar un patrón con una cadena fija:</p>
+<pre class="r"><code>x &lt;- c(&quot;manzana&quot;, &quot;pera&quot;, &quot;banana&quot;)
+str_replace(x, &quot;[aeiou]&quot;, &quot;-&quot;)</code></pre>
+<pre><code>## [1] &quot;m-nzana&quot; &quot;p-ra&quot;    &quot;b-nana&quot;</code></pre>
+<pre class="r"><code>str_replace_all(x, &quot;[aeiou]&quot;, &quot;-&quot;)</code></pre>
+<pre><code>## [1] &quot;m-nz-n-&quot; &quot;p-r-&quot;    &quot;b-n-n-&quot;</code></pre>
+<p>Con str_replace_all() puedes realizar múltiples remplazos a través de un vector cuyos elementos tiene nombre (named vector):</p>
+<pre class="r"><code>x &lt;- c(&quot;1 casa&quot;, &quot;2 autos&quot;, &quot;3 personas&quot;)
+str_replace_all(x, c(&quot;1&quot; = &quot;una&quot;, &quot;2&quot; = &quot;dos&quot;, &quot;3&quot; = &quot;tres&quot;))</code></pre>
+<pre><code>## [1] &quot;una casa&quot;      &quot;dos autos&quot;     &quot;tres personas&quot;</code></pre>
+<p>En vez de hacer remplazos con una cadena fija, puedes utilizar referencias previas para insertar componentes de la coincidencia. En el siguiente código invertimos el orden de la segunda y la tercera palabra:</p>
+<pre class="r"><code>oraciones %&gt;% 
+  str_replace(&quot;([^ ]+) ([^ ]+) ([^ ]+)&quot;, &quot;\\1 \\3 \\2&quot;) %&gt;% 
+  head(5)</code></pre>
+<pre><code>## [1] &quot;Las están casas construidas de ladrillos de arcilla roja.&quot;
+## [2] &quot;La fue caja arrojada al lado del camión estacionado.&quot;     
+## [3] &quot;El es domingo la mejor parte de la semana.&quot;               
+## [4] &quot;Agrega la a cuenta de la tienda hasta el último centavo.&quot; 
+## [5] &quot;Nueve fueron hombres contratados para excavar las ruinas.&quot;</code></pre>
+</div>
+<div id="divisiones" class="section level2">
+<h2>Divisiones</h2>
+<p>str_split() para dividir una cadena en partes. Por ejemplo, podemos dividir oraciones en palabras:</p>
+<pre class="r"><code>oraciones %&gt;%
+  head(5) %&gt;% 
+  str_split(&quot; &quot;)</code></pre>
+<pre><code>## [[1]]
+## [1] &quot;Las&quot;         &quot;casas&quot;       &quot;están&quot;       &quot;construidas&quot; &quot;de&quot;         
+## [6] &quot;ladrillos&quot;   &quot;de&quot;          &quot;arcilla&quot;     &quot;roja.&quot;      
+## 
+## [[2]]
+## [1] &quot;La&quot;           &quot;caja&quot;         &quot;fue&quot;          &quot;arrojada&quot;     &quot;al&quot;          
+## [6] &quot;lado&quot;         &quot;del&quot;          &quot;camión&quot;       &quot;estacionado.&quot;
+## 
+## [[3]]
+## [1] &quot;El&quot;      &quot;domingo&quot; &quot;es&quot;      &quot;la&quot;      &quot;mejor&quot;   &quot;parte&quot;   &quot;de&quot;     
+## [8] &quot;la&quot;      &quot;semana.&quot;
+## 
+## [[4]]
+##  [1] &quot;Agrega&quot;   &quot;a&quot;        &quot;la&quot;       &quot;cuenta&quot;   &quot;de&quot;       &quot;la&quot;      
+##  [7] &quot;tienda&quot;   &quot;hasta&quot;    &quot;el&quot;       &quot;último&quot;   &quot;centavo.&quot;
+## 
+## [[5]]
+## [1] &quot;Nueve&quot;       &quot;hombres&quot;     &quot;fueron&quot;      &quot;contratados&quot; &quot;para&quot;       
+## [6] &quot;excavar&quot;     &quot;las&quot;         &quot;ruinas.&quot;</code></pre>
+<p>Como cada componente podría tener un número diferente de elementos, esto devuelve una lista. Si estás trabajando con vectores de extensión 1, lo más fácil es extraer el primer elemento de la lista:</p>
+<pre class="r"><code>&quot;a|b|c|d&quot; %&gt;% 
+  str_split(&quot;\\|&quot;) %&gt;% 
+  .[[1]]</code></pre>
+<pre><code>## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot;</code></pre>
+<p>Otra opción es, al igual que con otras funciones de stringr que devuelven una lista, utilizar simplify = TRUE para obtener una matriz:</p>
+<pre class="r"><code>oraciones %&gt;%
+  head(5) %&gt;% 
+  str_split(&quot; &quot;, simplify = TRUE)</code></pre>
+<pre><code>##      [,1]     [,2]      [,3]     [,4]          [,5]    [,6]        [,7]    
+## [1,] &quot;Las&quot;    &quot;casas&quot;   &quot;están&quot;  &quot;construidas&quot; &quot;de&quot;    &quot;ladrillos&quot; &quot;de&quot;    
+## [2,] &quot;La&quot;     &quot;caja&quot;    &quot;fue&quot;    &quot;arrojada&quot;    &quot;al&quot;    &quot;lado&quot;      &quot;del&quot;   
+## [3,] &quot;El&quot;     &quot;domingo&quot; &quot;es&quot;     &quot;la&quot;          &quot;mejor&quot; &quot;parte&quot;     &quot;de&quot;    
+## [4,] &quot;Agrega&quot; &quot;a&quot;       &quot;la&quot;     &quot;cuenta&quot;      &quot;de&quot;    &quot;la&quot;        &quot;tienda&quot;
+## [5,] &quot;Nueve&quot;  &quot;hombres&quot; &quot;fueron&quot; &quot;contratados&quot; &quot;para&quot;  &quot;excavar&quot;   &quot;las&quot;   
+##      [,8]      [,9]           [,10]    [,11]     
+## [1,] &quot;arcilla&quot; &quot;roja.&quot;        &quot;&quot;       &quot;&quot;        
+## [2,] &quot;camión&quot;  &quot;estacionado.&quot; &quot;&quot;       &quot;&quot;        
+## [3,] &quot;la&quot;      &quot;semana.&quot;      &quot;&quot;       &quot;&quot;        
+## [4,] &quot;hasta&quot;   &quot;el&quot;           &quot;último&quot; &quot;centavo.&quot;
+## [5,] &quot;ruinas.&quot; &quot;&quot;             &quot;&quot;       &quot;&quot;</code></pre>
+<p>También puedes indicar un número máximo de elementos:</p>
+<pre class="r"><code>campos &lt;- c(&quot;Nombre: Hadley&quot;, &quot;País: NZ&quot;, &quot;Edad: 35&quot;)
+campos %&gt;% str_split(&quot;: &quot;, n = 2, simplify = TRUE)</code></pre>
+<pre><code>##      [,1]     [,2]    
+## [1,] &quot;Nombre&quot; &quot;Hadley&quot;
+## [2,] &quot;País&quot;   &quot;NZ&quot;    
+## [3,] &quot;Edad&quot;   &quot;35&quot;</code></pre>
+<pre class="r"><code>x &lt;- &quot;Esta es una oración. Esta es otra oración.&quot;
+str_view_all(x, boundary(&quot;word&quot;))  # si lo haces con str_extract_all genera lista</code></pre>
+<div id="htmlwidget-8edafaa8efd0c469a22a" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8edafaa8efd0c469a22a">{"x":{"html":"<ul>\n  <li><span class='match'>Esta<\/span> <span class='match'>es<\/span> <span class='match'>una<\/span> <span class='match'>oración<\/span>. <span class='match'>Esta<\/span> <span class='match'>es<\/span> <span class='match'>otra<\/span> <span class='match'>oración<\/span>.<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="buscar-coincidencias" class="section level2">
+<h2>Buscar coincidencias</h2>
+<p>str_locate() y str_locate_all() te indican la posición inicial y final de una coincidencia. Son particularmente útiles cuando ninguna otra función hace exactamente lo que quieres. Puedes utilizar str_locate() para encontrar los patrones de coincidencia y str_sub() para extraerlos y/o modificarlos.</p>
+</div>
+<div id="otro-tipo-de-patrones" class="section level2">
+<h2>Otro tipo de patrones</h2>
+<p>Cuando utilizas un patrón que es una cadena, este automáticamente es encapsulado en la función regex() (regular expression).</p>
+<p>Puedes utilizar los otros argumentos de regex() para controlar los detalles de la coincidencia:<br />
+* ´ignore_case = TRUE´ permite que la búsqueda coincida tanto con caracteres en mayúscula como en minúscula. Este argumento siempre utiliza los parámetros de tu locale.<br />
+* ´multiline = TRUE´ permite que ^ y $ coincidan con el inicio y fin de cada línea, en vez del inicio y fin de la cadena completa.<br />
+* ´comments = TRUE´ te permite utilizar comentarios y espacios en blanco para hacer más entendibles las expresiones regulares complejas. Los espacios son ignorados, al igual que todo lo que está después de #. Para coincidir un espacio de manera literal, tendrías que “escaparlo:”\ &quot;.<br />
+* ´dotall = TRUE´ permite que . coincida con todo, incluidos los saltos de línea ().</p>
+<pre class="r"><code>str_view(frutas, &quot;nana&quot;)</code></pre>
+<div id="htmlwidget-12dd9f7689f325dd9e0e" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-12dd9f7689f325dd9e0e">{"x":{"html":"<ul>\n  <li>ba<span class='match'>nana<\/span><\/li>\n  <li>papaya<\/li>\n  <li>uva<\/li>\n  <li>arándano<\/li>\n  <li>frutilla<\/li>\n  <li>mora<\/li>\n  <li>plátano<\/li>\n  <li>ananá<\/li>\n  <li>piña<\/li>\n  <li>manzana<\/li>\n  <li>pera<\/li>\n  <li>sandía<\/li>\n  <li>melocotón<\/li>\n  <li>melón<\/li>\n  <li>damasco<\/li>\n  <li>durazno<\/li>\n  <li>frambuesa<\/li>\n  <li>mango<\/li>\n  <li>guayaba<\/li>\n  <li>guanábana<\/li>\n  <li>maracuyá<\/li>\n  <li>fresa<\/li>\n  <li>coco<\/li>\n  <li>naranja<\/li>\n  <li>kiwi<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<pre class="r"><code># Es un atajo de
+str_view(frutas, regex(&quot;nana&quot;))</code></pre>
+<div id="htmlwidget-48eb6e26a3218a923f81" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-48eb6e26a3218a923f81">{"x":{"html":"<ul>\n  <li>ba<span class='match'>nana<\/span><\/li>\n  <li>papaya<\/li>\n  <li>uva<\/li>\n  <li>arándano<\/li>\n  <li>frutilla<\/li>\n  <li>mora<\/li>\n  <li>plátano<\/li>\n  <li>ananá<\/li>\n  <li>piña<\/li>\n  <li>manzana<\/li>\n  <li>pera<\/li>\n  <li>sandía<\/li>\n  <li>melocotón<\/li>\n  <li>melón<\/li>\n  <li>damasco<\/li>\n  <li>durazno<\/li>\n  <li>frambuesa<\/li>\n  <li>mango<\/li>\n  <li>guayaba<\/li>\n  <li>guanábana<\/li>\n  <li>maracuyá<\/li>\n  <li>fresa<\/li>\n  <li>coco<\/li>\n  <li>naranja<\/li>\n  <li>kiwi<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<pre class="r"><code>bananas &lt;- c(&quot;banana&quot;, &quot;Banana&quot;, &quot;BANANA&quot;)
+str_view(bananas, &quot;banana&quot;)</code></pre>
+<div id="htmlwidget-0a962fbf2590f57d1f79" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0a962fbf2590f57d1f79">{"x":{"html":"<ul>\n  <li><span class='match'>banana<\/span><\/li>\n  <li>Banana<\/li>\n  <li>BANANA<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<pre class="r"><code>str_view(bananas, regex(&quot;banana&quot;, ignore_case = TRUE))</code></pre>
+<div id="htmlwidget-547a14d8e9f9d58f8575" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-547a14d8e9f9d58f8575">{"x":{"html":"<ul>\n  <li><span class='match'>banana<\/span><\/li>\n  <li><span class='match'>Banana<\/span><\/li>\n  <li><span class='match'>BANANA<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<pre class="r"><code>x &lt;- &quot;Línea 1\nLínea 2\nLínea 3&quot;
+str_extract_all(x, &quot;^Línea&quot;)[[1]]</code></pre>
+<pre><code>## [1] &quot;Línea&quot;</code></pre>
+<pre class="r"><code>str_extract_all(x, regex(&quot;^Línea&quot;, multiline = TRUE))[[1]]</code></pre>
+<pre><code>## [1] &quot;Línea&quot; &quot;Línea&quot; &quot;Línea&quot;</code></pre>
+<pre class="r"><code>telefono &lt;- regex(&quot;
+  \\(?     # paréntesis inicial opcional
+  (\\d{3}) # código de área
+  [) -]?   # paréntesis, espacio o guión inicial opcional
+  (\\d{3}) # otros tres números
+  [ -]?    # espacio o guión opcional
+  (\\d{3}) # otros tres números
+  &quot;, comments = TRUE)
+str_match(&quot;514-791-8141&quot;, telefono)</code></pre>
+<pre><code>##      [,1]          [,2]  [,3]  [,4] 
+## [1,] &quot;514-791-814&quot; &quot;514&quot; &quot;791&quot; &quot;814&quot;</code></pre>
+<p>Existen otras tres funciones que puedes utilizar en vez de regex():<br />
+* ´fixed():´ busca una coincidencia exacta de la secuencia de bytes especificada. Ignora todas las expresiones regulares especiales y opera a un nivel muy bajo. Esto te permite evitar formas de “escapado” complejas y puede ser mucho más rápida que las expresiones regulares. La comparación utilizando microbenchmark muestra que fixed() es casi dos veces más rápida.<br />
+<strong>IMPORTANTE: ten precaución al utilizar fixed() con datos que no estén en inglés. Puede causar problemas porque muchas veces existen múltiples formas de representar un mismo caracter. Por ejemplo, hay dos formas de difinir “á”: como un solo caracter o como una “a” con un acento:</strong></p>
+<ul>
+<li>´coll():´ compara cadenas usando reglas de secuenciación (collation) estándar. Esto es útil para buscar coincidencias que sean insensibles a mayúsculas y minúsculas. Ten en cuenta que coll() incluye un parámetro para el locale, Lamentablemente, se utilizan diferentes reglas en diferentes partes del mundo.</li>
+</ul>
+<pre class="r"><code>#install.packages(microbenchmark)
+# microbenchmark::microbenchmark(
+  # fixed = str_detect(oraciones, fixed(&quot;la&quot;)),
+  # regex = str_detect(oraciones, &quot;la&quot;),
+  # times = 20
+#)
+
+a1 &lt;- &quot;\u00e1&quot;
+a2 &lt;- &quot;a\u0301&quot;
+c(a1, a2)</code></pre>
+<pre><code>## [1] &quot;á&quot; &quot;a´&quot;</code></pre>
+<pre class="r"><code>a1 == a2 #renderean de manera idéntica, pero como están definidas de manera distinta, dan false</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code># Esto quiere decir que también tienes que prestar atención a esas 
+# diferencias al buscar coincidencias insensibles a mayúsculas y
+# minúsculas
+i &lt;- c(&quot;I&quot;, &quot;İ&quot;, &quot;i&quot;, &quot;ı&quot;)
+str_subset(i, coll(&quot;i&quot;, ignore_case = TRUE))</code></pre>
+<pre><code>## [1] &quot;I&quot; &quot;I&quot; &quot;i&quot; &quot;i&quot;</code></pre>
+<pre class="r"><code>str_subset(i, coll(&quot;i&quot;, ignore_case = TRUE, locale = &quot;tr&quot;))</code></pre>
+<pre><code>## [1] &quot;i&quot; &quot;i&quot;</code></pre>
+<p>Tanto fixed() como regex() tienen argumentos para ignorar la diferencia entre mayúsculas y minúsculas (ignore_case); sin embargo, no te permiten elegir tu locale: siempre utilizan el que está definido por defecto. Puedes ver cuál se está usando con el siguiente código. Pronto hablaremos más sobre el paquete stringi.</p>
+<pre class="r"><code>stringi::stri_locale_info()</code></pre>
+<pre><code>## $Language
+## [1] &quot;es&quot;
+## 
+## $Country
+## [1] &quot;AR&quot;
+## 
+## $Variant
+## [1] &quot;&quot;
+## 
+## $Name
+## [1] &quot;es_AR&quot;</code></pre>
+<p>Una desventaja de coll() es la velocidad. Debido a que las reglas para reconocer qué caracteres son iguales suelen ser complicadas, coll() es relativamente más lenta al compararla con regex() y fixed().</p>
+<p>Como viste con str_split(), puedes utilizar boundary() para coincidir límites. También puedes utilizarla con otras funciones:</p>
+<pre class="r"><code>x &lt;- &quot;Esta es una oración.&quot;
+str_view_all(x, boundary(&quot;word&quot;))</code></pre>
+<div id="htmlwidget-3d1450726834c32bf559" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3d1450726834c32bf559">{"x":{"html":"<ul>\n  <li><span class='match'>Esta<\/span> <span class='match'>es<\/span> <span class='match'>una<\/span> <span class='match'>oración<\/span>.<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<pre class="r"><code>str_extract_all(x, boundary(&quot;word&quot;)) #&gt; [[1]] #&gt; [1] &quot;Esta&quot; &quot;es&quot; &quot;una&quot; &quot;oración&quot;</code></pre>
+<pre><code>## [[1]]
+## [1] &quot;Esta&quot;    &quot;es&quot;      &quot;una&quot;     &quot;oración&quot;</code></pre>
 </div>
 <div id="otros-usos-de-las-expresiones-regulares." class="section level2">
 <h2>Otros usos de las expresiones regulares.</h2>
