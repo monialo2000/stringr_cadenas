@@ -212,7 +212,7 @@ El siguiente paso en términos de poder implica controlar cuántas veces queremo
 
 * ?: 0 o 1
 * +: 1 o más
-* : 0 o más
+* *: 0 o más
 
 ```{r REPETICION}
 x <- "1888 es el año más largo en números romanos: MDCCCLXXXVIII"
